@@ -36,3 +36,12 @@ copyright:
   record: false
   hexo: true
   laughing: true
+
+# https://valine.js.org/
+# Valine 诞生于2017年8月7日，是一款基于Leancloud的快速、简洁且高效的无后端评论系统
+# https://leancloud.cn/ 你需要去这个网站注册账户，启用一个应用来获取appId和appKey。个人博客使用免费的就够用了
+valine:
+  enable: true
+  apiId: '<your-app-id>'
+  appKey: '<your-app-key>'
+  

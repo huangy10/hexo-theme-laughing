@@ -1,4 +1,8 @@
 extends ./_partial/layout.pug
+block extra-head
+  if theme.valine.enable
+    script(src="//cdn1.lncld.net/static/js/3.0.4/av-min.js")
+    script(src="//unpkg.com/valine/dist/Valine.min.js")
 block content
   include ./_partial/post_header.pug
   .article-content(style='max-width:'+ theme.content_width +'px')
@@ -17,20 +21,8 @@ block content
       .categories
         i.icon.icon-category
         | !{list_categories(page.categories)}
-  if theme.duoshuo.enable
-    .article-comment(style='max-width:'+ theme.content_width +'px')
-      #ds-thread.ds-thread(data-thread-key=page._id, data-title=page.title, data-url=config.url + url_for(page.path), site-name=theme.duoshuo.siteName)
-      script.
-        var siteName = document.getElementById('ds-thread').getAttribute('site-name');
-        var duoshuoQuery = {short_name: siteName};
-        (function() {
-          var ds = document.createElement('script');
-          ds.type = 'text/javascript';ds.async = true;
-          ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-          ds.charset = 'UTF-8';
-          (document.getElementsByTagName('head')[0] 
-          || document.getElementsByTagName('body')[0]).appendChild(ds);
-        })();
+  if theme.valine.enable
+    #vcomments(style='max-width:'+ theme.content_width +'px', class="article-comment")
   ul.navication
     li.home
       a(href="/")
@@ -43,3 +35,11 @@ block content
       li
         a(href=url_for(page.next.path))
           i.icon.icon-arror-right
+block script
+  if theme.valine.enable
+    script.
+      new Valine({
+              el: '#vcomments',
+              appId: '#{theme.valine.apiId}',
+              appKey: '#{theme.valine.appKey}'
+          });

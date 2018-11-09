@@ -11,6 +11,7 @@ html(lang="zh-cn")
     title #{page.title ? page.title + ' - ' + config.title : config.title + (config.subtitle ? (' - ' + config.subtitle) : '')}
     link(rel="stylesheet", href="/css/main_style.min.css")
     link(rel="icon", href=theme.favicon)
+    block extra-head
   body
     input#navi(type="checkbox")
     ul.main-navication
