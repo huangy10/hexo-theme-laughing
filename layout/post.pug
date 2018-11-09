@@ -1,8 +1,11 @@
 extends ./_partial/layout.pug
 block extra-head
-  if theme.valine.enable
-    script(src="//cdn1.lncld.net/static/js/3.0.4/av-min.js")
-    script(src="//unpkg.com/valine/dist/Valine.min.js")
+  case theme.comments.provider
+    when "valine"
+      script(src="//cdn1.lncld.net/static/js/3.0.4/av-min.js")
+      script(src="//unpkg.com/valine/dist/Valine.min.js")
+    default
+      - break
 block content
   include ./_partial/post_header.pug
   .article-content(style='max-width:'+ theme.content_width +'px')
@@ -21,8 +24,26 @@ block content
       .categories
         i.icon.icon-category
         | !{list_categories(page.categories)}
-  if theme.valine.enable
-    #vcomments(style='max-width:'+ theme.content_width +'px', class="article-comment")
+  case theme.comments.provider
+    when "valine"
+      #vcomments(style='max-width:'+ theme.content_width +'px', class="article-comment")
+    when "laibili"
+      #lv-container(data-id="city", data-uid=theme.comments.uid, class="article-comment"
+      style='max-width:'+ theme.content_width +'px')
+        script.
+          (function(d, s) {
+            var j, e = d.getElementsByTagName(s)[0];
+
+            if (typeof LivereTower === 'function') { return; }
+
+            j = d.createElement(s);
+            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+            j.async = true;
+
+            e.parentNode.insertBefore(j, e);
+          })(document, 'script');
+    default
+      - break
   ul.navication
     li.home
       a(href="/")
@@ -36,10 +57,26 @@ block content
         a(href=url_for(page.next.path))
           i.icon.icon-arror-right
 block script
-  if theme.valine.enable
-    script.
-      new Valine({
-              el: '#vcomments',
-              appId: '#{theme.valine.apiId}',
-              appKey: '#{theme.valine.appKey}'
-          });
+  case theme.comments.provider
+    when "valine"
+      script.
+        new Valine({
+                el: '#vcomments',
+                appId: '#{theme.valine.apiId}',
+                appKey: '#{theme.valine.appKey}'
+            });
+    //- when "laibili"
+    //-   script.
+    //-     (function(d, s) {
+    //-       var j, e = d.getElementsByTagName(s)[0];
+
+    //-       if (typeof LivereTower === 'function') { return; }
+
+    //-       j = d.createElement(s);
+    //-       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    //-       j.async = true;
+
+    //-       e.parentNode.insertBefore(j, e);
+    //-     })(document, 'script');
+    default
+      - break
