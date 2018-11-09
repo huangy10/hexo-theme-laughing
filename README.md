@@ -127,17 +127,57 @@ social:
 
 ### 评论
 
-这个主题之前默认支持的是多说平台，但是这个平台现在已经关闭了。现在增加了对valine这个平台的支持。如果有需要后续会添加对于其他平台的支持。
-需要注意的是在配置文件中需要填上[从leanCloud获取的appId和appKey](https://valine.js.org/quickstart.html)。
+这个主题之前默认支持的是多说平台，但是这个平台现在已经关闭了。 
+现在增加了对一些其他的平台的支持。如果有需要今后会进一步扩展评论使用的范围。
+
+#### Valine
+
+Valine 诞生于2017年8月7日，是一款基于Leancloud的快速、简洁且高效的无后端评论系统。
+你需要先去[LeanCloud](https://leancloud.cn/)上注册一个账户并创建应用。
+在配置文件中需要填上[从leanCloud获取的appId和appKey](https://valine.js.org/quickstart.html)。在主题中使用Valine的方式如下：
 
 ``` yaml
-valine:
-  enable: true
+comments:
+  provider: valine
   apiId: '<your-app-id>'
   appKey: '<your-app-key>'
 ```
 
-可以通过设置enable为false来关闭评论.
+#### 来必力
+
+来必力是其来自韩国的产品。其官网是[http://www.laibili.com.cn/](http://www.laibili.com.cn/)。相比于Valine，来必力的评论形式更加丰富一些，支持图片和动图。
+配置模板为：
+
+``` yaml
+comments:
+  provider: laibili
+  uid: '<your-data-uid>'
+```
+
+其中，`uid`来自于来必力管理界面中代码管理部分提供的安装代码。例如一个一般网站的安装代码为：
+
+```html
+<!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="Mi8xLzM=">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+```
+
+其中最上层`div`标签中的`data-uid`即为需要填写到配置文件中的`uid`.
 
 ### 版权
 
