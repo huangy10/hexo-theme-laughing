@@ -3,9 +3,9 @@ favicon: /favicon.ico
 # SEO
 keywords: Hexo, Gruntjs, Nodejs, Reactjs, Vuejs
 # Header
-page_background: http://callfiles.ueibo.com/hexo-theme-laughing/page_background.jpg
+page_background: https://i.loli.net/2018/11/05/5bdfeccbb2696.jpg
 page_menu_button: dark
-post_background: http://callfiles.ueibo.com/hexo-theme-laughing/post_background.jpg
+post_background: https://i.loli.net/2018/11/05/5bdfeccbb2696.jpg
 post_menu_button: light
 title_plancehold: 随笔
 author:
@@ -23,17 +23,14 @@ content_width: 800
 social:
   - name: Github
     icon: github
-    link: https://github.com/BoizZ
-  - name: Weibo
-    icon: weibo
-    link: https://weibo.com/heqibang
-  - name: SegmentFault
-    icon: segmentfault
-    link: https://www.segmentfault.com/u/bon
-# Duoshuo
-duoshuo:
-  enable: true
-  siteName: ueibo
+    link: https://github.com/huangy10
+  - name: Zhihu
+    icon: zhihu
+    link: https://www.zhihu.com/people/woody-huang
+  - name: Email
+    icon: email
+    link: mailto:woodyhuang1@gmail.com
+
 # Copyright
 copyright:
   record: false
