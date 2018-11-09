@@ -125,19 +125,19 @@ social:
     link: http://github.com/BoizZ
 ```
 
-### 多说
+### 评论
 
-多说是自由开启的，默认开启，如果不需要则在配置文件里面关闭即可。
-
-需要注意的是，多说的`url`配置默认使用站点的配置。请更改站点配置中`url`为自己的域名。
+这个主题之前默认支持的是多说平台，但是这个平台现在已经关闭了。现在增加了对valine这个平台的支持。如果有需要后续会添加对于其他平台的支持。
+需要注意的是在配置文件中需要填上[从leanCloud获取的appId和appKey](https://valine.js.org/quickstart.html)。
 
 ``` yaml
-## enable：是否开启多说（true：开启，false：关闭）
-## siteName：多说账号种填写的网站名称
-duoshuo:
+valine:
   enable: true
-  siteName: ueibo
+  apiId: '<your-app-id>'
+  appKey: '<your-app-key>'
 ```
+
+可以通过设置enable为false来关闭评论.
 
 ### 版权
 
