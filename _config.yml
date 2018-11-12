@@ -9,13 +9,13 @@ post_background: https://i.loli.net/2018/11/05/5bdfeccbb2696.jpg
 post_menu_button: light
 title_plancehold: 随笔
 author:
-  head: http://callfiles.ueibo.com/hexo-theme-laughing/thumb.jpg
-  signature: Only when you plant the flowers can you really smell their fragrance.
+  head: https://i.loli.net/2018/11/05/5bdfe65918658.jpg
+  signature: 晚来天欲雪，能饮一杯无？
 navication:
   - name: Github
-    link: https://github.com
-  - name: V2EX
-    link: https://www.v2ex.com/
+    link: https://github.com/huangy10
+  - name: Archives
+    link: /archives
 # content
 content_width: 800
 # Footer
